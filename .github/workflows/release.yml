@@ -1,0 +1,40 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version (e.g. 1.0.72)'
+        required: true
+        default: '1.0.72'
+
+jobs:
+  publish:
+    runs-on: windows-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: winui/global.json
+
+      - name: Publish WinUI dist
+        shell: pwsh
+        run: |
+          $version = '${{ github.event.inputs.version }}'
+          $script = Get-Content 'winui/scripts/Publish-Release.ps1' -Raw -Encoding UTF8
+          $script = $script -replace "1\.0\.72", $version
+          Set-Content 'winui/scripts/Publish-Release.ps1' $script -Encoding UTF8
+          & 'winui/scripts/Publish-Release.ps1'
+
+      - name: Upload to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ github.event.inputs.version }}
+          name: PLCPak v${{ github.event.inputs.version }} WinUI
+          files: releases/PLCPak_v${{ github.event.inputs.version }}_WinUI.zip
+          generate_release_notes: true

@@ -1,0 +1,361 @@
+﻿{
+    "version":  1,
+    "description":  "广告样本哈希清单。大文件仅保留签名，文件名+SHA256 检测能力与完整样本一致。",
+    "generatedFrom":  "文件压缩打包工具_v1.7.3.zip",
+    "fileCount":  57,
+    "folders":  [
+                    "ad-samples",
+                    "pc",
+                    "pc+安卓使用mtool翻译教程",
+                    "安卓",
+                    "老王论坛420205873白菜分享",
+                    "老王论坛下载",
+                    "免责声明请在使用前阅读我",
+                    "上老王论坛当老王"
+                ],
+    "files":  [
+                  {
+                      "name":  "MTool_E173755E.zip",
+                      "sha256":  "1f12fdb8ab2b3f70dbde0e2b512987b765ed2b143d6b5d2929451a09e3dffcec",
+                      "size":  179703096,
+                      "samplePath":  "PC+安卓使用Mtool翻译教程"
+                  },
+                  {
+                      "name":  "laowang-win-5585292.zip",
+                      "sha256":  "a602cfe5e3bb3604a3f49fd42e8f866f8136f3320269a33793182cd06f3581a5",
+                      "size":  5732782,
+                      "samplePath":  ""
+                  },
+                  {
+                      "name":  "laowang-5585292.apk",
+                      "sha256":  "dc068260573d3c564739906ff162ef2f800f9892318a8d1c76e98d62eee25a43",
+                      "size":  2654150,
+                      "samplePath":  ""
+                  },
+                  {
+                      "name":  "www.game520.org - MOD游戏基地.png",
+                      "sha256":  "0fd5535de1d9deb48344e470722339cbb1251bb08823cbe31c934c082f871f3f",
+                      "size":  1507715,
+                      "samplePath":  ""
+                  },
+                  {
+                      "name":  "2.png",
+                      "sha256":  "048c37e5a71b2d54e3a3c0dfc0a1813a3231545ee90665af294346cab7f960c3",
+                      "size":  1397616,
+                      "samplePath":  "PC+安卓使用Mtool翻译教程/PC"
+                  },
+                  {
+                      "name":  "6.jpg",
+                      "sha256":  "86fb1c391978cf3f5500be79291a17f007061177b05804f77881a12835e0650d",
+                      "size":  444499,
+                      "samplePath":  "PC+安卓使用Mtool翻译教程/安卓"
+                  },
+                  {
+                      "name":  "打开资源百宝箱.docx",
+                      "sha256":  "9b98569b5ef3577e55e48f894507b92b361fcfffd2b6cc656f48ccc011f50e51",
+                      "size":  428636,
+                      "samplePath":  ""
+                  },
+                  {
+                      "name":  "5.jpg",
+                      "sha256":  "29e252631368d325452a81d996e6bcd91a05accb9b833b157ddd616b679c1c8d",
+                      "size":  393585,
+                      "samplePath":  "PC+安卓使用Mtool翻译教程/安卓"
+                  },
+                  {
+                      "name":  "2.png",
+                      "sha256":  "d20debb677c450170a05dafb24a922b18e87e9a4bd37b9f4e1c71fbad9a6e8bc",
+                      "size":  365121,
+                      "samplePath":  "PC+安卓使用Mtool翻译教程/安卓"
+                  },
+                  {
+                      "name":  "免责声明.png",
+                      "sha256":  "da2a53002d9b1158d8718e12d885649d662f4e148c941b7f6f1c33844265cf0e",
+                      "size":  338408,
+                      "samplePath":  "免责声明请在使用前阅读我"
+                  },
+                  {
+                      "name":  "4.png",
+                      "sha256":  "1f738924789ba0edbf19999132b918e3e41b62e74ee3b2c827bdd781757c5285",
+                      "size":  211782,
+                      "samplePath":  "PC+安卓使用Mtool翻译教程/安卓"
+                  },
+                  {
+                      "name":  "1.png",
+                      "sha256":  "c00490342205cddce4702b2ea00833cf0ccf0feed7dee8aa316f5a02fd67f09d",
+                      "size":  169787,
+                      "samplePath":  "PC+安卓使用Mtool翻译教程/PC"
+                  },
+                  {
+                      "name":  "3.png",
+                      "sha256":  "584bab330d1d28a3688560c2372f9ac8acb59d512180899f800ca4b20964beb6",
+                      "size":  167682,
+                      "samplePath":  "PC+安卓使用Mtool翻译教程/安卓"
+                  },
+                  {
+                      "name":  "ioc.png",
+                      "sha256":  "ebcd5b522fa4437ed86eaa38aa081ed21b15551ad78c8bdaf0fe0ae472b587eb",
+                      "size":  119993,
+                      "samplePath":  ""
+                  },
+                  {
+                      "name":  "index .png",
+                      "sha256":  "dccaea188e3b08b7a98def6f005daa6da4455e4ffe6a388545705cf62cc8bb7b",
+                      "size":  110574,
+                      "samplePath":  ""
+                  },
+                  {
+                      "name":  "免责声明.pdf",
+                      "sha256":  "71f1c03ec9a0ea688ccf23e2ca18df891b91586afaca4ddafaeae31fda5f5cff",
+                      "size":  94385,
+                      "samplePath":  ""
+                  },
+                  {
+                      "name":  "3.png",
+                      "sha256":  "cedd8181bd041206ec3b9ceade574fa89eb878673f349a45a9f15b193618fdc7",
+                      "size":  57963,
+                      "samplePath":  "PC+安卓使用Mtool翻译教程/PC"
+                  },
+                  {
+                      "name":  "1.png",
+                      "sha256":  "33f540f7bf88d2a62fa87b1e3ab0bc5e515b07ccb7e65a27b3eff0bf100cadf3",
+                      "size":  54346,
+                      "samplePath":  "PC+安卓使用Mtool翻译教程/安卓"
+                  },
+                  {
+                      "name":  "上老王论坛当老王.zip",
+                      "sha256":  "b4464655fe9b1910369180cfa98dced44ecf3af3b1b45455c5642857792cb0c7",
+                      "size":  7658,
+                      "samplePath":  ""
+                  },
+                  {
+                      "name":  "游戏启动说明.txt",
+                      "sha256":  "39956628e903fdd97d1cbe2c6c79197b87836cfb5f329b062b293eb01fb45056",
+                      "size":  5190,
+                      "samplePath":  ""
+                  },
+                  {
+                      "name":  "config.ini",
+                      "sha256":  "94281221bc923f1fbbd9b016f6402881aa8260b771aedf87d4a6c6c6a18ebe06",
+                      "size":  3363,
+                      "samplePath":  ""
+                  },
+                  {
+                      "name":  "免责声明.txt",
+                      "sha256":  "72df3d817ff2f5499aaa1836748a049b78c7b189f58702a5a88bf1e399de1413",
+                      "size":  2696,
+                      "samplePath":  ""
+                  },
+                  {
+                      "name":  "免责声明1.txt",
+                      "sha256":  "b487ad1053b0603d271272b8bb06167198dcccd743478a6be64d34e60f4a0cc6",
+                      "size":  2696,
+                      "samplePath":  "免责声明请在使用前阅读我"
+                  },
+                  {
+                      "name":  "Affirm the use agreement申明使用协议.txt",
+                      "sha256":  "a79489ddfe0b41977c4a28d8c1eb91682d0a0cc60bee0a614ea2f279980a5009",
+                      "size":  1932,
+                      "samplePath":  ""
+                  },
+                  {
+                      "name":  "【来了就能下载和观看！纯免费！】 - 副本.txt",
+                      "sha256":  "f9a7aa359c4b5c41a80c573ea32fc1c7abcdc2e5bfd8b841f78effdc5e6da45d",
+                      "size":  1664,
+                      "samplePath":  ""
+                  },
+                  {
+                      "name":  "【论坛介绍】 - 副本 - 副本 - 副本.txt",
+                      "sha256":  "71818ef926d724b990cecae348e6ffa80f65fc8920ba45039ef679674883e0ac",
+                      "size":  1653,
+                      "samplePath":  ""
+                  },
+                  {
+                      "name":  "推荐一个非常好用的VIPN机场扶梯.txt",
+                      "sha256":  "54924c1a7f2f91e61e2ecdf31216b048ec20fc51d345f433e9fa69fa86683983",
+                      "size":  1519,
+                      "samplePath":  "PC+安卓使用Mtool翻译教程"
+                  },
+                  {
+                      "name":  "【来了就能下载和观看！纯免费！】.txt",
+                      "sha256":  "34546335202f85330c277382dcf4e92fc4ca36378fb313ccc5d117aaa37355d8",
+                      "size":  1147,
+                      "samplePath":  ""
+                  },
+                  {
+                      "name":  "【论坛介绍】.txt",
+                      "sha256":  "b2832408da5d7141ec2cac3fcbae72917a29222e4337f5927d403ae94f3dfe21",
+                      "size":  1138,
+                      "samplePath":  ""
+                  },
+                  {
+                      "name":  "【老王论坛介绍】.txt",
+                      "sha256":  "530ad0317df574932197cbf298fb8bfcaa7fcf86bf178e113948225765093c7a",
+                      "size":  1090,
+                      "samplePath":  "上老王论坛当老王"
+                  },
+                  {
+                      "name":  "【来了就能下载和观看的论坛，纯免费！】.txt",
+                      "sha256":  "a71d36ccc7eb90435b9adaca1fbfbf7bd3ba38023cc5490c9d481833f8e45fe5",
+                      "size":  1087,
+                      "samplePath":  "上老王论坛当老王"
+                  },
+                  {
+                      "name":  "更多游戏目录详情.txt",
+                      "sha256":  "6f00eb3caffe72200c6592d33261a72b1a3972cb0faaaed53dd173cfa7c2bdbb",
+                      "size":  863,
+                      "samplePath":  "PC+安卓使用Mtool翻译教程/安卓"
+                  },
+                  {
+                      "name":  "没有一键启动或不管用怎么办？【看这个】.txt",
+                      "sha256":  "1ccd5f3bf1e60e3a814e75fcbd7cae32392ae8a8c2b8aeadbb0b24482910fe6f",
+                      "size":  740,
+                      "samplePath":  "PC+安卓使用Mtool翻译教程"
+                  },
+                  {
+                      "name":  "如果没有一键启动.txt",
+                      "sha256":  "40d399431736de531d935db93888cd78c47d845e9ffe2556e93a3d69927538b1",
+                      "size":  736,
+                      "samplePath":  "PC+安卓使用Mtool翻译教程/PC"
+                  },
+                  {
+                      "name":  "最新地址及APP请发邮箱自动获取！！！.txt",
+                      "sha256":  "e6111b9559039e1b8517da2a19ec0f353b576a3597b8fe79ccfb042c41647cd8",
+                      "size":  669,
+                      "samplePath":  ""
+                  },
+                  {
+                      "name":  "最新地址及APP请发邮箱自动获取！！！ - 副本 - 副本 - 副本.txt",
+                      "sha256":  "edf39377cab515be1019212cb7d8325d4124c59806f3eadc42fe3e9ad9d581f8",
+                      "size":  614,
+                      "samplePath":  ""
+                  },
+                  {
+                      "name":  "获取最新地址及APP请发邮箱自动获取.txt",
+                      "sha256":  "212404ad0f6ea20e63039b583000d2bd5d63eeabcb59b571ebeac25551abc60d",
+                      "size":  592,
+                      "samplePath":  "上老王论坛当老王"
+                  },
+                  {
+                      "name":  "超高性价比机场.txt",
+                      "sha256":  "584bd97cfcb2bebaebbba6f3716e14664550bc914b932c2cb4e38a103b392ee5",
+                      "size":  517,
+                      "samplePath":  ""
+                  },
+                  {
+                      "name":  "【免费黄油\u0026刘备小说电报群】.txt",
+                      "sha256":  "9a0a113cdfa11b9b6fcc924f1c6b1b7365cdf19cf563a7860e1b1207b9d01728",
+                      "size":  486,
+                      "samplePath":  ""
+                  },
+                  {
+                      "name":  "温馨提示.txt",
+                      "sha256":  "be65ecea92f6714e8bbfa3a256e4530876408d71a31783f4d405bc272a2aaaf2",
+                      "size":  429,
+                      "samplePath":  ""
+                  },
+                  {
+                      "name":  "Codmen.ini",
+                      "sha256":  "4e775cdf190ac646c8827f7866402d8eac2b55da43cd36da108ac97d62bf65be",
+                      "size":  312,
+                      "samplePath":  "PC+安卓使用Mtool翻译教程/PC"
+                  },
+                  {
+                      "name":  "【永久地址发布页】 - 副本 - 副本 - 副本 - 副本.txt",
+                      "sha256":  "9d3944f682a6d1d7cde7e1ef528dcdd54207384a9324056288d05dd56dd46b61",
+                      "size":  245,
+                      "samplePath":  ""
+                  },
+                  {
+                      "name":  "好用便宜的梯子VPN.txt",
+                      "sha256":  "42ae8505d9920a40b74df23062d2233f772dba17781d31c6beafc42689cf9cbf",
+                      "size":  245,
+                      "samplePath":  ""
+                  },
+                  {
+                      "name":  "【永久地址发布页】.txt",
+                      "sha256":  "319ebab6a1b80cd2933f50e6ea801dbc0d5125d6d99f4ae7a046d6f94cb24891",
+                      "size":  215,
+                      "samplePath":  ""
+                  },
+                  {
+                      "name":  "www.game158打不开-用这个梯子-再也没有看不了的网站，每月只需13.8元起.url",
+                      "sha256":  "2324b731be6373a1042f6bc8376730c021ce39ff62d21147b554d3a23b6f32b9",
+                      "size":  209,
+                      "samplePath":  ""
+                  },
+                  {
+                      "name":  "www.game520.org - 双击查看更多游戏.url",
+                      "sha256":  "5f0057518116377177178f61d699ddbb74dc3aeca960447af729c13e30b1a0c4",
+                      "size":  181,
+                      "samplePath":  ""
+                  },
+                  {
+                      "name":  "www.game158.cc - 瑜伽健身互动游戏.url",
+                      "sha256":  "0988d20d8e1eb0c04617035345361e09d51da1fc5bcf1e09e46bac373df9c5e2",
+                      "size":  180,
+                      "samplePath":  ""
+                  },
+                  {
+                      "name":  "本站永久发布页.url",
+                      "sha256":  "0971592a2c450676c2cd5ef12894dbc8904a97d04042ad02fca1084537e70b92",
+                      "size":  178,
+                      "samplePath":  ""
+                  },
+                  {
+                      "name":  "game.data.url",
+                      "sha256":  "9463b14203113bbb332f1825935c2cb6f457276398e49cfd3d90990e5d383523",
+                      "size":  174,
+                      "samplePath":  ""
+                  },
+                  {
+                      "name":  "【老王论坛永久地址发布页】.txt",
+                      "sha256":  "e6ee057468c07e33fe2b34926e9ca46245a24723d6f87ffec1beb6e934775acd",
+                      "size":  170,
+                      "samplePath":  "上老王论坛当老王"
+                  },
+                  {
+                      "name":  "安卓模拟器下载地址.txt",
+                      "sha256":  "da9c37ed98db4c0a945e4a5272b3a6d2a275a38cdc792102f8ff454c70a49fb9",
+                      "size":  149,
+                      "samplePath":  "PC+安卓使用Mtool翻译教程/安卓"
+                  },
+                  {
+                      "name":  "baicail.txt",
+                      "sha256":  "08bcae36b2e97ca326190c0a5df7211bd815b54fb0dcd0d8ea32643eeb48d5ad",
+                      "size":  118,
+                      "samplePath":  ""
+                  },
+                  {
+                      "name":  "api.ini",
+                      "sha256":  "14975380ceffd1a5b1f4759c31d41c5312a8be948fef45100eca25f65861790b",
+                      "size":  87,
+                      "samplePath":  ""
+                  },
+                  {
+                      "name":  "mtool需更新至最新版本.txt",
+                      "sha256":  "a02d699d0bac7971fb57f8554d820711b303e82e1678cb69bbc9db88dd48118f",
+                      "size":  59,
+                      "samplePath":  "PC+安卓使用Mtool翻译教程"
+                  },
+                  {
+                      "name":  "点我检查更新.bat",
+                      "sha256":  "7ae21b8d4c84ad7eb8ecb07d4911782324f427298e1b139e1c3806e8cf24a933",
+                      "size":  29,
+                      "samplePath":  ""
+                  },
+                  {
+                      "name":  "989841.txt",
+                      "sha256":  "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b",
+                      "size":  1,
+                      "samplePath":  ""
+                  },
+                  {
+                      "name":  "现在翻译器好像需要梯子才能更新到最新版.txt",
+                      "sha256":  "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                      "size":  0,
+                      "samplePath":  "PC+安卓使用Mtool翻译教程"
+                  }
+              ],
+    "lastUpdated":  "2026-06-24 01:11:58"
+}

@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/PLCPak.Cli/PLCPak.Cli.csproj" />
+    <Project Path="src/PLCPak.Core/PLCPak.Core.csproj" />
+    <Project Path="src/PLCPak.WinUI/PLCPak.WinUI.csproj" />
+  </Folder>
+</Solution>

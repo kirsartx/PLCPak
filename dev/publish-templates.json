@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "defaultTemplateId": "telegram-default",
+  "templates": [
+    {
+      "id": "telegram-default",
+      "name": "TG 频道默认",
+      "channel": "telegram",
+      "body": "🎮 {title}\n\n📦 百度网盘\n{baidu_line}\n\n📦 夸克网盘\n{quark_line}\n\n📁 打包文件\n{output_summary}\n\n📢 频道：{telegram_channel}\n\n🔗 原帖：{thread_url}"
+    },
+    {
+      "id": "forum-reply",
+      "name": "论坛回帖简版",
+      "channel": "forum",
+      "body": "【{title}】\n\n百度：{baidu_link}  提取码：{baidu_pwd}\n夸克：{quark_link}  提取码：{quark_pwd}\n\n文件：\n{output_summary}"
+    }
+  ]
+}

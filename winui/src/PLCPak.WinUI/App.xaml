@@ -1,0 +1,102 @@
+﻿<Application
+    x:Class="PLCPak.WinUI.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:infra="using:PLCPak.WinUI.Infrastructure"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Light">
+                    <SolidColorBrush x:Key="PlcLayerFillBrush" Color="#FFF3F3F3" />
+                    <SolidColorBrush x:Key="PlcCardBackgroundBrush" Color="#FFFDFDFD" />
+                    <SolidColorBrush x:Key="PlcCardStrokeBrush" Color="#FFC8C8C8" />
+                    <SolidColorBrush x:Key="PlcSecondaryTextBrush" Color="#FF666666" />
+                    <SolidColorBrush x:Key="PlcAccentBrush" Color="#FF0078D4" />
+                    <SolidColorBrush x:Key="PlcAccentSubtleBrush" Color="#1A0078D4" />
+                    <SolidColorBrush x:Key="PlcSuccessSubtleBrush" Color="#1A107C10" />
+                    <SolidColorBrush x:Key="PlcSuccessBrush" Color="#FF107C10" />
+                    <SolidColorBrush x:Key="PlcWarningSubtleBrush" Color="#1AC45500" />
+                    <SolidColorBrush x:Key="PlcWarningBrush" Color="#FFC45500" />
+                    <SolidColorBrush x:Key="PlcDangerSubtleBrush" Color="#1AC50F1F" />
+                    <SolidColorBrush x:Key="PlcDangerBrush" Color="#FFC50F1F" />
+                    <SolidColorBrush x:Key="PlcMetricValueBrush" Color="#FF1A1A1A" />
+                    <SolidColorBrush x:Key="PlcNavHighlightBrush" Color="#1A0078D4" />
+                    <SolidColorBrush x:Key="PlcTitleBarTextBrush" Color="#FF1A1A1A" />
+                </ResourceDictionary>
+                <ResourceDictionary x:Key="Dark">
+                    <SolidColorBrush x:Key="PlcLayerFillBrush" Color="#FF2D2D2D" />
+                    <SolidColorBrush x:Key="PlcCardBackgroundBrush" Color="#FF1E1E1E" />
+                    <SolidColorBrush x:Key="PlcCardStrokeBrush" Color="#FF3D3D3D" />
+                    <SolidColorBrush x:Key="PlcSecondaryTextBrush" Color="#FFB0B0B0" />
+                    <SolidColorBrush x:Key="PlcAccentBrush" Color="#FF60A5FA" />
+                    <SolidColorBrush x:Key="PlcAccentSubtleBrush" Color="#3360A5FA" />
+                    <SolidColorBrush x:Key="PlcSuccessSubtleBrush" Color="#334ADE80" />
+                    <SolidColorBrush x:Key="PlcSuccessBrush" Color="#FF4ADE80" />
+                    <SolidColorBrush x:Key="PlcWarningSubtleBrush" Color="#33FBBF24" />
+                    <SolidColorBrush x:Key="PlcWarningBrush" Color="#FFFBBF24" />
+                    <SolidColorBrush x:Key="PlcDangerSubtleBrush" Color="#33F87171" />
+                    <SolidColorBrush x:Key="PlcDangerBrush" Color="#FFF87171" />
+                    <SolidColorBrush x:Key="PlcMetricValueBrush" Color="#FFF5F5F5" />
+                    <SolidColorBrush x:Key="PlcNavHighlightBrush" Color="#3360A5FA" />
+                    <SolidColorBrush x:Key="PlcTitleBarTextBrush" Color="#FFF5F5F5" />
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>
+
+            <infra:BoolToVisibilityConverter x:Key="BoolToVis" />
+
+            <Style x:Key="PlcPageTitle" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="FontWeight" Value="SemiBold" />
+                <Setter Property="Foreground" Value="{ThemeResource PlcTitleBarTextBrush}" />
+            </Style>
+            <Style x:Key="PlcSectionTitle" TargetType="TextBlock">
+                <Setter Property="FontWeight" Value="SemiBold" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="Foreground" Value="{ThemeResource PlcTitleBarTextBrush}" />
+            </Style>
+            <Style x:Key="PlcHintText" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="Foreground" Value="{ThemeResource PlcSecondaryTextBrush}" />
+                <Setter Property="TextWrapping" Value="Wrap" />
+            </Style>
+            <Style x:Key="PlcHeroCard" TargetType="Border">
+                <Setter Property="Padding" Value="16" />
+                <Setter Property="Background" Value="{ThemeResource PlcAccentSubtleBrush}" />
+                <Setter Property="BorderBrush" Value="{ThemeResource PlcAccentBrush}" />
+                <Setter Property="BorderThickness" Value="1" />
+                <Setter Property="CornerRadius" Value="10" />
+            </Style>
+            <Style x:Key="PlcContentCard" TargetType="Border">
+                <Setter Property="Padding" Value="12" />
+                <Setter Property="Background" Value="{ThemeResource PlcCardBackgroundBrush}" />
+                <Setter Property="BorderBrush" Value="{ThemeResource PlcCardStrokeBrush}" />
+                <Setter Property="BorderThickness" Value="1" />
+                <Setter Property="CornerRadius" Value="8" />
+            </Style>
+            <Style x:Key="PlcMetricCard" TargetType="Border">
+                <Setter Property="Padding" Value="12,10" />
+                <Setter Property="MinHeight" Value="72" />
+                <Setter Property="Background" Value="{ThemeResource PlcCardBackgroundBrush}" />
+                <Setter Property="BorderBrush" Value="{ThemeResource PlcCardStrokeBrush}" />
+                <Setter Property="BorderThickness" Value="1" />
+                <Setter Property="CornerRadius" Value="8" />
+            </Style>
+            <Style x:Key="PlcPrimaryButton" TargetType="Button">
+                <Setter Property="FontWeight" Value="SemiBold" />
+                <Setter Property="MinWidth" Value="120" />
+            </Style>
+            <Style x:Key="PlcGuideBar" TargetType="Border">
+                <Setter Property="Margin" Value="16,0,16,8" />
+                <Setter Property="Padding" Value="12,10" />
+                <Setter Property="Background" Value="{ThemeResource PlcSuccessSubtleBrush}" />
+                <Setter Property="BorderBrush" Value="{ThemeResource PlcSuccessBrush}" />
+                <Setter Property="BorderThickness" Value="1" />
+                <Setter Property="CornerRadius" Value="8" />
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

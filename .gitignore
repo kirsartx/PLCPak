@@ -1,0 +1,50 @@
+# Build outputs
+**/bin/
+**/obj/
+dist/
+winui/dist/
+
+# IDE
+.vs/
+*.user
+*.suo
+*.DotSettings.user
+
+# Runtime / local workspace
+**/workspace/
+**/logs/
+**/.plcpak-session.json
+**/scan-cache.json
+**/ui-prefs.json
+
+# Release binaries (use GitHub Releases instead)
+releases/**/*.zip
+releases/**/PLCPak_v*/
+releases/新建文件夹/
+
+# Legacy version snapshots (reference only, not for git)
+v1.7.4/
+v1.8.0/
+v2.0.0/
+
+# Executables
+*.exe
+*.dll
+*.pdb
+*.cache
+
+# OS
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# Archives / temp
+*.7z
+*.zip
+!dev/manifest-update/**
+ad-manifest-update.zip
+
+# Secrets (never commit tokens)
+*.pat
+.env
+.env.*

@@ -1,0 +1,17 @@
+{
+    "VolumeSizeMB": 1900,
+    "AdScanTimeoutSec": 300,
+    "AdConfirmThreshold": 20,
+    "UseRecycleBin": true,
+    "PreviewBeforeClean": true,
+    "ParallelHashWorkers": 4,
+    "UseScanCache": true,
+    "HashMaxFileMB": 50,
+    "CompressThreads": 0,
+    "TempDir": "",
+    "SkipStoreCompress": true,
+    "ManifestStaleDays": 7,
+    "Whitelist": [],
+    "RecentProjects": [],
+    "HashSkipExtensions": [".png", ".jpg", ".jpeg", ".gif", ".bmp", ".webp", ".apk", ".dll", ".exe", ".mp4", ".avi", ".mkv", ".zip", ".7z", ".rar", ".zst", ".tar", ".iso"]
+}

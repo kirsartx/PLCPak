@@ -1,0 +1,9 @@
+{
+    "version": "2.0.0",
+    "latestVersion": "2.0.0",
+    "channel": "stable",
+    "releaseNotes": "v2.0: 预览→确认→清理→压缩流水线；设置面板；完整CLI；并行哈希；扫描缓存；输出校验",
+    "manifestUrl": "",
+    "toolUrl": "",
+    "manifestVersion": "57"
+}

@@ -1,0 +1,13 @@
+{
+  "workspaceRoot": "",
+  "forums": [
+    {
+      "id": "laowang",
+      "name": "老王论坛",
+      "homeUrl": "https://laowang.vip"
+    }
+  ],
+  "extractPasswords": [
+    "上老王论坛当老王"
+  ]
+}

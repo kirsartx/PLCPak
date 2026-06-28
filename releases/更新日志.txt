@@ -1,0 +1,6 @@
+PLCPak 更新日志已统一为 Markdown 格式。
+
+请打开同目录下的 CHANGELOG.md（发行 ZIP 内 dist 根目录亦包含该文件）。
+
+涵盖范围：v10.8.0 起至当前版本的完整记录；v10.7 及更早为索引摘要。
+开发完整历史见：winui\README.txt

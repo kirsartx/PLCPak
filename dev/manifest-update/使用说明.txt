@@ -1,0 +1,1 @@
+﻿将 ad-manifest.json 覆盖到 PLCPak 目录下的 AD-Samples\ 即可更新广告清单，无需重下完整包。

@@ -1,0 +1,225 @@
+﻿<Window
+    x:Class="PLCPak.WinUI.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PLCPak.WinUI">
+
+    <Grid
+        x:Name="RootGrid"
+        KeyDown="RootGrid_KeyDown"
+        Background="{ThemeResource PlcLayerFillBrush}"
+        Loaded="RootGrid_Loaded">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid x:Name="AppTitleBar" Height="48">
+            <TextBlock
+                x:Name="TitleBarText"
+                Margin="16,0,0,0"
+                VerticalAlignment="Center"
+                FontSize="16"
+                FontWeight="SemiBold" />
+            <Button
+                x:Name="QuickStatsBtn"
+                Margin="0,0,8,0"
+                Padding="8,4"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center"
+                Background="Transparent"
+                BorderThickness="0"
+                Click="QuickStatsBtn_Click"
+                FontSize="12"
+                Foreground="{ThemeResource PlcSecondaryTextBrush}"
+                ToolTipService.ToolTip="">
+                <TextBlock Text="{x:Bind QuickStatsText, Mode=OneWay}" />
+            </Button>
+        </Grid>
+
+        <StackPanel Grid.Row="1" Margin="16,8,16,0" Spacing="6">
+            <Grid ColumnSpacing="8">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                    <ToggleButton
+                        x:Name="QuickModeBtn"
+                        Click="QuickModeBtn_Click" />
+                    <ToggleButton
+                        x:Name="JobsModeBtn"
+                        Click="JobsModeBtn_Click" />
+                    <ToggleButton
+                        x:Name="DashboardModeBtn"
+                        Click="DashboardModeBtn_Click" />
+                    <ToggleButton
+                        x:Name="WizardModeBtn"
+                        Click="WizardModeBtn_Click" />
+                    <ToggleButton
+                        x:Name="OperationsModeBtn"
+                        Click="OperationsModeBtn_Click" />
+                    <Button
+                        x:Name="CommandPaletteBtn"
+                        Click="CommandPaletteBtn_Click" />
+                    <Button
+                        x:Name="HelpBtn"
+                        Click="HelpBtn_Click" />
+                    <Button
+                        x:Name="SettingsBtn"
+                        Click="SettingsBtn_Click" />
+                </StackPanel>
+                <StackPanel
+                    Grid.Column="1"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal"
+                    Spacing="8">
+                    <TextBlock
+                        x:Name="ProfessionalModeHintText"
+                        VerticalAlignment="Center"
+                        FontSize="12"
+                        Foreground="{ThemeResource PlcSecondaryTextBrush}" />
+                    <ToggleSwitch
+                        x:Name="ProfessionalModeSwitch"
+                        Toggled="ProfessionalModeSwitch_Toggled" />
+                </StackPanel>
+            </Grid>
+            <Grid
+                x:Name="SimpleModeHintPanel"
+                ColumnSpacing="8"
+                Visibility="Collapsed">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    x:Name="SimpleModeHintText"
+                    Grid.Column="0"
+                    VerticalAlignment="Center"
+                    FontSize="11"
+                    Foreground="{ThemeResource PlcSecondaryTextBrush}"
+                    TextWrapping="Wrap" />
+                <Button
+                    x:Name="SimpleModeHintDismissBtn"
+                    Grid.Column="1"
+                    MinWidth="0"
+                    Padding="8,2"
+                    VerticalAlignment="Center"
+                    Background="Transparent"
+                    BorderThickness="0"
+                    Click="SimpleModeHintDismissBtn_Click"
+                    FontSize="11"
+                    Foreground="{ThemeResource PlcSecondaryTextBrush}" />
+            </Grid>
+        </StackPanel>
+
+        <ScrollViewer x:Name="ContentScrollViewer" Grid.Row="2" Padding="16">
+            <Grid>
+                <local:MainPage x:Name="MainPageControl" />
+                <local:JobsPage x:Name="JobsPageControl" Visibility="Collapsed" />
+                <local:DashboardPage x:Name="DashboardPageControl" Visibility="Collapsed" />
+                <local:WizardPage x:Name="WizardPageControl" Visibility="Collapsed" />
+                <local:OperationsPage x:Name="OperationsPageControl" Visibility="Collapsed" />
+            </Grid>
+        </ScrollViewer>
+
+        <Border x:Name="WorkflowGuideBar" Grid.Row="3" Style="{StaticResource PlcGuideBar}">
+            <Grid ColumnSpacing="12">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Spacing="2">
+                    <TextBlock
+                        x:Name="WorkflowGuideTitleText"
+                        FontWeight="SemiBold" />
+                    <StackPanel
+                        x:Name="WorkflowGuideLoadingPanel"
+                        Orientation="Horizontal"
+                        Spacing="8"
+                        Visibility="Collapsed">
+                        <ProgressRing
+                            Width="14"
+                            Height="14"
+                            IsActive="True" />
+                        <TextBlock
+                            x:Name="WorkflowGuideLoadingText"
+                            FontSize="12"
+                            Foreground="{ThemeResource PlcSecondaryTextBrush}"
+                            TextWrapping="Wrap" />
+                    </StackPanel>
+                    <TextBlock
+                        x:Name="WorkflowGuideSummaryText"
+                        TextWrapping="Wrap" />
+                    <TextBlock
+                        x:Name="WorkflowGuideReasonText"
+                        FontSize="12"
+                        Foreground="{ThemeResource PlcSecondaryTextBrush}"
+                        TextWrapping="Wrap" />
+                </StackPanel>
+                <StackPanel
+                    Grid.Column="1"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal"
+                    Spacing="8">
+                    <Button
+                        x:Name="WorkflowGoPageBtn"
+                        Click="WorkflowGoPageBtn_Click" />
+                    <Button
+                        x:Name="WorkflowGoJobBtn"
+                        Click="WorkflowGoJobBtn_Click" />
+                    <Button
+                        x:Name="WorkflowExecuteBtn"
+                        Click="WorkflowExecuteBtn_Click"
+                        FontWeight="SemiBold" />
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <InfoBar
+            x:Name="GlobalInfoBar"
+            Grid.Row="4"
+            Margin="16,8,16,0"
+            Closed="GlobalInfoBar_Closed"
+            IsClosable="True"
+            IsOpen="False"
+            Severity="Informational" />
+
+        <Grid
+            Grid.Row="0"
+            Grid.RowSpan="6"
+            Canvas.ZIndex="2000">
+            <local:OnboardingOverlay x:Name="OnboardingOverlayControl" />
+        </Grid>
+
+        <Grid
+            x:Name="GlobalBusyOverlay"
+            Grid.Row="0"
+            Grid.RowSpan="6"
+            Background="#66000000"
+            Visibility="{x:Bind GlobalBusyVisibility, Mode=OneWay}">
+            <StackPanel
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Spacing="12">
+                <ProgressRing
+                    Width="48"
+                    Height="48"
+                    IsActive="True" />
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    Foreground="White"
+                    Text="{x:Bind GlobalBusyText, Mode=OneWay}" />
+                <ProgressBar
+                    Width="240"
+                    Maximum="100"
+                    Value="{x:Bind GlobalPipelinePercent, Mode=OneWay}"
+                    Visibility="{x:Bind ShowGlobalPipelineProgress, Mode=OneWay}" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
