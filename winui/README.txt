@@ -14,6 +14,8 @@ GUI：
   2. 启动恢复「向导」页时自动落点任务工作台并聚焦向导区
   3. 简易模式下看板隐藏「智能下一步」卡片，避免与底部全局引导栏重复
   4. 全局建议跳转「向导」时一律走任务内嵌向导
+  5. 修复启动崩溃：主题在 App 构造函数 InitializeComponent 之前从 ui-prefs 读取并设置 RequestedTheme
+  6. 运行时切换主题改走主窗口 RootGrid，避免 OnLaunched 后设置 Application.RequestedTheme 触发 COM 异常
 
 版本：
   1. AppVersion 1.0.74；VersionCheck 远程示例 1.0.75

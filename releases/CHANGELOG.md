@@ -15,7 +15,7 @@
 
 | 版本 | 摘要 |
 |------|------|
-| v1.0.74 | 向导统一与看板精简 |
+| v1.0.74 | 向导统一与看板精简（含启动主题修复） |
 | v1.0.73 | 简易模式流程简化 |
 | v1.0.72 | 修复新手引导与暗色主题 |
 | v1.0.71 | 修复命令面板崩溃 |
@@ -94,6 +94,8 @@
 - 启动恢复「向导」页时自动落点任务工作台并聚焦向导区
 - 简易模式下看板隐藏「智能下一步」卡片，避免与底部全局引导栏重复
 - 全局建议跳转「向导」时一律走任务内嵌向导
+- 修复启动崩溃：主题在 App 构造函数 `InitializeComponent` 之前从 `ui-prefs.json` 读取并设置 `RequestedTheme`
+- 运行时切换主题改走主窗口 `RootGrid`，避免 `OnLaunched` 后设置 `Application.RequestedTheme` 触发 `COMException`（HResult 0x80131515）
 
 ### 脚本
 - `Publish-Release.ps1` 从 `AppVersion.cs` 自动读取版本号；ZIP 文件名动态生成

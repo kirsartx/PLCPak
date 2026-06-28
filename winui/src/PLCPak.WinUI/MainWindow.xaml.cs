@@ -104,6 +104,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
     public MainWindow()
     {
         InitializeComponent();
+        ThemeService.RegisterThemeRoot(RootGrid);
         TitleBarText.Text = AppVersion.DisplayName;
         ViewModel = new MainViewModel(App.Services);
         JobsViewModel = new JobsViewModel(App.Services);

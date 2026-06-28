@@ -21,6 +21,8 @@ public partial class App : Application
         UnhandledException += OnUnhandledException;
         try
         {
+            var startupTheme = ThemeService.ReadThemeFromDisk(AppContext.BaseDirectory);
+            ThemeService.ApplyAtStartup(this, startupTheme);
             InitializeComponent();
             Services = PlcPakAppContext.FromExecutableDirectory();
             AppLogger.Write(LogPath, "App initialized");
