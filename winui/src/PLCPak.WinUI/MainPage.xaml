@@ -34,7 +34,6 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
             <TextBlock Text="{Binding QuickRecentProjectsLabel}" VerticalAlignment="Center" />
             <ComboBox
@@ -43,7 +42,6 @@
                 ItemsSource="{Binding RecentProjects}"
                 SelectedItem="{Binding SelectedRecentProject, Mode=TwoWay}"
                 SelectionChanged="RecentCombo_SelectionChanged" />
-            <Button Grid.Column="2" Click="SettingsButton_Click" Content="{Binding QuickSettingsLabel}" />
         </Grid>
 
         <Grid>

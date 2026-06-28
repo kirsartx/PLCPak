@@ -127,7 +127,9 @@
             Text="{Binding MetricsLoadingHint}"
             Visibility="{Binding IsRefreshing, Converter={StaticResource BoolToVis}}" />
 
-        <Border Style="{StaticResource PlcHeroCard}">
+        <Border
+            Style="{StaticResource PlcHeroCard}"
+            Visibility="{Binding IsSimpleMode, Converter={StaticResource BoolToVis}, ConverterParameter=Invert}">
             <StackPanel Spacing="8">
                 <TextBlock Style="{StaticResource PlcSectionTitle}" Text="{Binding SmartNextTitle}" />
                 <TextBlock

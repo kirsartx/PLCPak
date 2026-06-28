@@ -370,9 +370,9 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
 
     private void UpdateNavButtonVisibility()
     {
+        QuickModeBtn.Visibility = Visibility.Visible;
         var showAdvancedNav = IsProfessionalMode;
         var visibility = showAdvancedNav ? Visibility.Visible : Visibility.Collapsed;
-        QuickModeBtn.Visibility = visibility;
         WizardModeBtn.Visibility = visibility;
         OperationsModeBtn.Visibility = visibility;
     }
@@ -405,7 +405,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
             return;
 
         var current = GetCurrentNavPage();
-        if (current is not ("quick" or "wizard" or "operations"))
+        if (current is not ("wizard" or "operations"))
             return;
 
         var target = _workflowGuide.RecommendedPage is "jobs" or "dashboard"
@@ -757,7 +757,8 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
                 e.Handled = true;
                 break;
             case VirtualKey.Number5:
-                ShowOperationsMode();
+                if (!IsSimpleMode)
+                    ShowOperationsMode();
                 e.Handled = true;
                 break;
         }
@@ -831,21 +832,22 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
     private void RestoreNavigationFromPreferences()
     {
         var prefs = App.Services.UiPreferences.Load();
-        switch (prefs.LastNavMode?.Trim().ToLowerInvariant())
+        var rawMode = prefs.LastNavMode?.Trim().ToLowerInvariant();
+        var focusWizardOnLoad = rawMode == "wizard";
+        switch (NormalizeStartupNavMode(prefs.LastNavMode))
         {
             case "jobs":
                 ApplyJobsModeVisibility();
                 JobsViewModel.RefreshJobsCommand.Execute(null);
                 RestoreLastSelectedJob(prefs);
+                if (focusWizardOnLoad)
+                    DispatcherQueue.TryEnqueue(FocusWizardForCurrentJob);
                 break;
             case "dashboard":
                 ApplyDashboardModeVisibility();
                 DashboardViewModel.RefreshCommand.Execute(null);
                 break;
-            case "wizard":
-                ApplyWizardModeVisibility();
-                WizardViewModel.RefreshWizardCommand.Execute(null);
-                break;
+
             case "operations":
                 ApplyOperationsModeVisibility();
                 OperationsViewModel.RefreshCommand.Execute(null);
@@ -854,6 +856,28 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
                 ApplyQuickModeVisibility();
                 break;
         }
+    }
+
+    private string NormalizeStartupNavMode(string? mode)
+    {
+        mode = mode?.Trim().ToLowerInvariant();
+        if (string.IsNullOrEmpty(mode))
+            return IsSimpleMode ? "jobs" : "quick";
+
+        if (mode == "wizard")
+            return "jobs";
+
+        if (IsSimpleMode && mode == "operations")
+            return "jobs";
+
+        return mode;
+    }
+
+    private void FocusWizardForCurrentJob()
+    {
+        var jobId = JobsViewModel.SelectedJob?.Id ?? _workflowGuide.JobId;
+        if (!string.IsNullOrWhiteSpace(jobId))
+            NavigateToJob(jobId, focusWizard: true);
     }
 
     private void RestoreLastSelectedJob(UiPreferencesModel prefs)
@@ -931,8 +955,10 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
 
     private void ShowWizardMode()
     {
-        if (WizardPageControl.Visibility == Visibility.Visible)
+        if (JobsPageControl.Visibility == Visibility.Visible)
         {
+            SetNavChecked(quick: false, jobs: true, dashboard: false, wizard: false, operations: false);
+            FocusWizardForCurrentJob();
             UpdateQuickStats();
             return;
         }
@@ -940,11 +966,16 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         AnimateContentSwitch(
             () =>
             {
-                ApplyWizardModeVisibility();
-                SaveNavMode("wizard");
+                ApplyJobsModeVisibility();
+                SaveNavMode("jobs");
                 UpdateQuickStats();
             },
-            () => WizardViewModel.RefreshWizardCommand.Execute(null));
+            () =>
+            {
+                if (JobsViewModel.RefreshJobsCommand.CanExecute(null))
+                    JobsViewModel.RefreshJobsCommand.Execute(null);
+                FocusWizardForCurrentJob();
+            });
     }
 
     private void ShowOperationsMode()
@@ -1326,8 +1357,6 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
                 break;
             case "wizard":
                 ShowWizardMode();
-                if (!string.IsNullOrWhiteSpace(_workflowGuide.JobId))
-                    WizardViewModel.SelectJob(_workflowGuide.JobId);
                 break;
             case "operations":
                 ShowOperationsMode();
@@ -2133,6 +2162,40 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
     {
         static CommandPaletteItem P(string titleKey, string descKey, Action execute)
             => new(titleKey, LocalizationService.T(titleKey), LocalizationService.T(descKey), execute);
+
+        if (IsSimpleMode)
+        {
+            return
+            [
+                P("shell.palette.navQuick.title", "shell.palette.navQuick.desc", ShowQuickMode),
+                P("shell.palette.navJobs.title", "shell.palette.navJobs.desc", ShowJobsMode),
+                P("shell.palette.navDashboard.title", "shell.palette.navDashboard.desc", ShowDashboardMode),
+                P("shell.palette.refreshJobs.title", "shell.palette.refreshJobs.desc", () =>
+                {
+                    if (JobsViewModel.RefreshJobsCommand.CanExecute(null))
+                        JobsViewModel.RefreshJobsCommand.Execute(null);
+                }),
+                P("shell.palette.saveLinks.title", "shell.palette.saveLinks.desc", () =>
+                {
+                    ShowJobsMode();
+                    if (JobsViewModel.SavePublishLinksCommand.CanExecute(null))
+                        JobsViewModel.SavePublishLinksCommand.Execute(null);
+                }),
+                P("shell.palette.fullPipeline.title", "shell.palette.fullPipeline.desc", () =>
+                {
+                    ShowJobsMode();
+                    if (JobsViewModel.RunFullPipelineCommand.CanExecute(null))
+                        JobsViewModel.RunFullPipelineCommand.Execute(null);
+                }),
+                P("shell.palette.previewTgPending.title", "shell.palette.previewTgPending.desc", () =>
+                {
+                    ShowDashboardMode();
+                    if (DashboardViewModel.PreviewTgPendingCommand.CanExecute(null))
+                        DashboardViewModel.PreviewTgPendingCommand.Execute(null);
+                }),
+                P("shell.palette.openSettings.title", "shell.palette.openSettings.desc", () => _ = OpenSettingsAsync())
+            ];
+        }
 
         return
         [

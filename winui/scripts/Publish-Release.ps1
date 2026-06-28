@@ -1,11 +1,22 @@
 ﻿# 发布 PLCPak WinUI v4.0 到 dist 目录（共享 data/ + scripts/ + logs/ + workspace/）
 param(
     [string]$Configuration = 'Release',
-    [string]$DevAssets = 'F:\BaiduNetdiskDownload\PLCPak\dev'
+    [string]$DevAssets = ''
 )
 
 $ErrorActionPreference = 'Stop'
 $root = Split-Path -Parent $PSScriptRoot
+if ([string]::IsNullOrWhiteSpace($DevAssets)) {
+    $DevAssets = Join-Path (Split-Path -Parent $root) 'dev'
+}
+$appVersionFile = Join-Path $root 'src\PLCPak.Core\AppVersion.cs'
+$version = if (Test-Path -LiteralPath $appVersionFile) {
+    if ([regex]::Match((Get-Content -LiteralPath $appVersionFile -Raw), 'Current\s*=\s*"([^"]+)"').Success) {
+        [regex]::Match((Get-Content -LiteralPath $appVersionFile -Raw), 'Current\s*=\s*"([^"]+)"').Groups[1].Value
+    } else { '0.0.0' }
+} else { '0.0.0' }
+$displayName = "PLCPak v$version WinUI"
+$cliDisplayName = "PLCPak CLI v$version"
 $dist = Join-Path $root 'dist'
 $releasesDir = Join-Path (Split-Path -Parent $root) 'releases'
 $sharedData = Join-Path $dist 'data'
@@ -80,9 +91,9 @@ $scriptDir = $ScriptDir
 $vf = Join-Path $sharedData 'version.json'
 if (Test-Path -LiteralPath $vf) {
     $v = Get-Content -LiteralPath $vf -Raw -Encoding UTF8 | ConvertFrom-Json
-    $v.version = '1.0.72'
-    $v.latestVersion = '1.0.72'
-    $v.releaseNotes = 'v1.0.72——修复暗色主题卡片/文字不可见、新手引导与命令面板'
+    $v.version = $version
+    $v.latestVersion = $version
+    $v.releaseNotes = "v$version——$displayName"
     $v | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath $vf -Encoding UTF8
 }
 
@@ -93,8 +104,8 @@ cd /d "%~dp0app"
 start "" "%~dp0app\PLCPak.WinUI.exe"
 '@ | Set-Content -LiteralPath (Join-Path $guiOut '启动 PLCPak.bat') -Encoding ASCII
 
-@'
-PLCPak v1.0.72 WinUI 目录说明
+@"
+PLCPak v$version WinUI 目录说明
 ==========================
 
 根目录（你看到的这一层）:
@@ -115,7 +126,7 @@ PLCPak v1.0.72 WinUI 目录说明
   3. 若无法启动，查看 ..\logs\plcpak-startup.log
 
 命令行版: ..\PLCPak.Cli\预览样本.bat
-'@ | Set-Content -LiteralPath (Join-Path $guiOut '启动说明.txt') -Encoding UTF8
+"@ | Set-Content -LiteralPath (Join-Path $guiOut '启动说明.txt') -Encoding UTF8
 
 @'
 @echo off
@@ -140,8 +151,8 @@ PLCPak.Cli.exe %*
 if errorlevel 1 pause
 '@ | Set-Content -LiteralPath (Join-Path $cliOut 'PLCPak-CLI.bat') -Encoding ASCII
 
-@'
-PLCPak CLI v1.0.72
+@"
+PLCPak CLI v$version
 ===============
 
   app/              命令行程序本体
@@ -153,7 +164,7 @@ PLCPak CLI v1.0.72
   PLCPak-CLI.bat -Preview -Path "D:\游戏" -Json
 
 GUI 版: ..\PLCPak.WinUI\启动 PLCPak.bat
-'@ | Set-Content -LiteralPath (Join-Path $cliOut '启动说明.txt') -Encoding UTF8
+"@ | Set-Content -LiteralPath (Join-Path $cliOut '启动说明.txt') -Encoding UTF8
 
 $changelogMd = Join-Path $releasesDir 'CHANGELOG.md'
 if (-not (Test-Path -LiteralPath $changelogMd)) {
@@ -163,7 +174,7 @@ if (-not (Test-Path -LiteralPath $changelogMd)) {
 }
 
 if (-not (Test-Path -LiteralPath $releasesDir)) { New-Item -ItemType Directory -Path $releasesDir -Force | Out-Null }
-$zip = Join-Path $releasesDir 'PLCPak_v1.0.72_WinUI.zip'
+$zip = Join-Path $releasesDir "PLCPak_v${version}_WinUI.zip"
 if (Test-Path $zip) { Remove-Item $zip -Force }
 Compress-Archive -Path (Join-Path $dist '*') -DestinationPath $zip -Force
 
