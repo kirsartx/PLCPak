@@ -41,6 +41,10 @@ powershell -File winui/scripts/Publish-Release.ps1
 
 仓库 **Settings → Collaborators → Add people**，对方接受邀请后即可 `git push`。
 
+## 使用说明
+
+面向最终用户的安装、简易模式流程、快捷键与常见问题见 [`releases/使用说明.md`](releases/使用说明.md)。打发行包时会自动复制到 ZIP 根目录。
+
 ## 更新日志
 
 完整记录见 [`releases/CHANGELOG.md`](releases/CHANGELOG.md)。

@@ -110,8 +110,9 @@ PLCPak v$version WinUI 目录说明
 
 根目录（你看到的这一层）:
   启动 PLCPak.bat     推荐用这个启动
-  启动说明.txt        本文件
-  CHANGELOG.md        版本更新日志（Markdown，v10.8.0 起完整记录）
+  启动说明.txt        本目录说明
+  ..\使用说明.md      完整使用说明（推荐先看）
+  ..\CHANGELOG.md     版本更新日志
   app/                程序本体（exe 与运行库，请勿单独挪动 exe）
 
 共享资源（与 CLI 共用，在上级 dist 目录）:
@@ -173,6 +174,13 @@ if (-not (Test-Path -LiteralPath $changelogMd)) {
     Copy-Item -LiteralPath $changelogMd -Destination (Join-Path $dist 'CHANGELOG.md') -Force
 }
 
+$usageMd = Join-Path $releasesDir '使用说明.md'
+if (-not (Test-Path -LiteralPath $usageMd)) {
+    Write-Warning "使用说明缺失，跳过: $usageMd"
+} else {
+    Copy-Item -LiteralPath $usageMd -Destination (Join-Path $dist '使用说明.md') -Force
+}
+
 if (-not (Test-Path -LiteralPath $releasesDir)) { New-Item -ItemType Directory -Path $releasesDir -Force | Out-Null }
 $zip = Join-Path $releasesDir "PLCPak_v${version}_WinUI.zip"
 if (Test-Path $zip) { Remove-Item $zip -Force }
@@ -183,6 +191,7 @@ Write-Host "  GUI: $guiOut"
 Write-Host "  CLI: $cliOut"
 Write-Host "  共享 data: $sharedData"
 Write-Host "  更新日志: $(Join-Path $dist 'CHANGELOG.md')"
+Write-Host "  使用说明: $(Join-Path $dist '使用说明.md')"
 Write-Host "  ZIP: $zip"
 Write-Host ''
 Write-Host 'dist 根目录:'
