@@ -29,6 +29,8 @@ v2.0.0/
 
 # Executables
 *.exe
+# Bundled 7-Zip must stay in git; other executables stay ignored.
+!dev/7-Zip-Zstandard/7z.exe
 *.dll
 *.pdb
 *.cache

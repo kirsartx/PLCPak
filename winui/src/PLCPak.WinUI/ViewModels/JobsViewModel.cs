@@ -1,6 +1,7 @@
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Text;
+using System.Text.Json;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using PLCPak.Core;
@@ -2368,7 +2369,7 @@ public partial class JobsViewModel : ObservableObject
             return;
         }
 
-        Process.Start(new ProcessStartInfo { FileName = url, UseShellExecute = true });
+        TryOpenHttpLink(url, "jobs.detail.openThread");
     }
 
     [RelayCommand(CanExecute = nameof(CanRun))]
@@ -2380,7 +2381,7 @@ public partial class JobsViewModel : ObservableObject
             return;
         }
 
-        Process.Start(new ProcessStartInfo { FileName = BaiduLink.Trim(), UseShellExecute = true });
+        TryOpenHttpLink(BaiduLink, "jobs.detail.openBaidu");
     }
 
     [RelayCommand(CanExecute = nameof(CanRun))]
@@ -2392,8 +2393,25 @@ public partial class JobsViewModel : ObservableObject
             return;
         }
 
-        Process.Start(new ProcessStartInfo { FileName = QuarkLink.Trim(), UseShellExecute = true });
+        TryOpenHttpLink(QuarkLink, "jobs.detail.openQuark");
     }
+
+    private void TryOpenHttpLink(string raw, string titleKey)
+    {
+        var text = raw.Trim();
+        if (!IsAbsoluteHttpUri(text))
+        {
+            MessageRequested?.Invoke(Msg("jobs.msg.linkMustBeHttp"), Title(titleKey));
+            return;
+        }
+
+        Process.Start(new ProcessStartInfo { FileName = text, UseShellExecute = true });
+    }
+
+    private static bool IsAbsoluteHttpUri(string text) =>
+        Uri.TryCreate(text, UriKind.Absolute, out var uri)
+        && (uri.Scheme.Equals(Uri.UriSchemeHttp, StringComparison.OrdinalIgnoreCase)
+            || uri.Scheme.Equals(Uri.UriSchemeHttps, StringComparison.OrdinalIgnoreCase));
 
     private void PersistArchivePassword(PublishJob job)
     {
@@ -2849,19 +2867,30 @@ public partial class JobsViewModel : ObservableObject
                     break;
                 }
 
-                var job = _app.Jobs.Get(jobId);
-                if (job is null)
-                    continue;
-
-                _ui.Run(() =>
+                try
                 {
-                    if (SelectedJob?.Id != jobId)
-                        return;
+                    var job = _app.Jobs.Get(jobId);
+                    if (job is null)
+                        continue;
 
-                    var newText = string.Join(Environment.NewLine, job.Log);
-                    if (!string.Equals(JobLogText, newText, StringComparison.Ordinal))
-                        JobLogText = newText;
-                });
+                    _ui.Run(() =>
+                    {
+                        if (SelectedJob?.Id != jobId)
+                            return;
+
+                        var newText = string.Join(Environment.NewLine, job.Log);
+                        if (!string.Equals(JobLogText, newText, StringComparison.Ordinal))
+                            JobLogText = newText;
+                    });
+                }
+                catch (OperationCanceledException)
+                {
+                    break;
+                }
+                catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or JsonException)
+                {
+                    // A replace or a torn read can fail this pass. Keep polling.
+                }
             }
         }, token);
     }

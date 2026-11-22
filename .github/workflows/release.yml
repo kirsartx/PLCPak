@@ -2,11 +2,6 @@ name: Release
 
 on:
   workflow_dispatch:
-    inputs:
-      version:
-        description: 'Release version (e.g. 1.0.72)'
-        required: true
-        default: '1.0.72'
 
 jobs:
   publish:
@@ -17,6 +12,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Read AppVersion
+        id: version
+        shell: pwsh
+        run: |
+          $file = 'winui/src/PLCPak.Core/AppVersion.cs'
+          $match = [regex]::Match((Get-Content -LiteralPath $file -Raw), 'Current\s*=\s*"([^"]+)"')
+          if (-not $match.Success) { throw "AppVersion.Current not found in $file" }
+          $version = $match.Groups[1].Value
+          "version=$version" >> $env:GITHUB_OUTPUT
+          Write-Host "AppVersion.Current=$version"
+
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
@@ -25,16 +31,12 @@ jobs:
       - name: Publish WinUI dist
         shell: pwsh
         run: |
-          $version = '${{ github.event.inputs.version }}'
-          $script = Get-Content 'winui/scripts/Publish-Release.ps1' -Raw -Encoding UTF8
-          $script = $script -replace "1\.0\.72", $version
-          Set-Content 'winui/scripts/Publish-Release.ps1' $script -Encoding UTF8
           & 'winui/scripts/Publish-Release.ps1'
 
       - name: Upload to GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v${{ github.event.inputs.version }}
-          name: PLCPak v${{ github.event.inputs.version }} WinUI
-          files: releases/PLCPak_v${{ github.event.inputs.version }}_WinUI.zip
+          tag_name: v${{ steps.version.outputs.version }}
+          name: PLCPak v${{ steps.version.outputs.version }} WinUI
+          files: releases/PLCPak_v${{ steps.version.outputs.version }}_WinUI.zip
           generate_release_notes: true

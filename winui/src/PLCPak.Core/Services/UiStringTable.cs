@@ -755,6 +755,7 @@ public static class UiStringTable
         // Jobs dialog messages (jobs.msg.*)
         ["jobs.msg.clipboardNoText"] = ("剪贴板中没有文本。", "Clipboard has no text."),
         ["jobs.msg.clipboardNotHttpLink"] = ("剪贴板内容不像 http 链接。", "Clipboard text does not look like an http link."),
+        ["jobs.msg.linkMustBeHttp"] = ("只能打开 http 或 https 链接。", "Only http or https links can be opened."),
         ["jobs.msg.clipboardEmpty"] = ("剪贴板内容为空。", "Clipboard is empty."),
         ["jobs.msg.fillPublishLinksFirst"] = ("请先填写百度、夸克或 TG 发布链接。", "Fill in Baidu, Quark, or TG publish links first."),
         ["jobs.msg.selectJobFirst"] = ("请先选择任务。", "Select a job first."),

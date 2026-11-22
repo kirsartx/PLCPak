@@ -95,8 +95,8 @@ public sealed class VersionCheckServiceTests : IDisposable
     {
         var handler = new MockVersionHttpHandler("""
             {
-              "version": "1.0.75",
-              "latestVersion": "1.0.75",
+              "version": "1.0.76",
+              "latestVersion": "1.0.76",
               "channel": "stable"
             }
             """);
@@ -106,8 +106,8 @@ public sealed class VersionCheckServiceTests : IDisposable
 
         Assert.True(result.HasUpdate);
         Assert.Equal(AppVersion.Current, result.LocalVersion);
-        Assert.Equal("1.0.75", result.RemoteVersion);
-        Assert.Contains("1.0.75", result.Message);
+        Assert.Equal("1.0.76", result.RemoteVersion);
+        Assert.Contains("1.0.76", result.Message);
     }
 
     private sealed class MockVersionHttpHandler(string responseBody) : HttpMessageHandler
